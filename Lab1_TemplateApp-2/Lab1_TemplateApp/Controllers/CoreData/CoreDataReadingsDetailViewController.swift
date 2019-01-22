@@ -20,7 +20,7 @@ class CoreDataReadingsDetailViewController: BaseReadingsDetailViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadReading()
+        loadReadings()
     }
     
     func loadReadings() {
@@ -43,14 +43,14 @@ class CoreDataReadingsDetailViewController: BaseReadingsDetailViewController {
 // MARK: - UITableViewDataSource
 extension CoreDataReadingsDetailViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // TODO: - Implement Method
         return self.readings.count
     }
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let reading = readings[indexPath.row]
         let cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "cell")
-        let value = sensor.value(forKey: "value") as! Float
-        cell.textLabel?.text = "\(value)"
+        let value = reading.value(forKey: "value") as! Float
+        let timestamp = reading.value(forKey: "timestamp") as! Date
+        cell.textLabel?.text = "\(value): \(timestamp)"
         return cell
     }
 }
