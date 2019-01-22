@@ -18,7 +18,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication: Any]? = nil) -> Bool {
         // Override point for customization after application launch.
 //        self.saveContext()
+
         return true
+    }
+    
+    func applicationDidFinishLaunching(_ application: UIApplication) {
+        print(NSSearchPathForDirectoriesInDomains(.applicationSupportDirectory, .userDomainMask, true).last! as String)
+
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
